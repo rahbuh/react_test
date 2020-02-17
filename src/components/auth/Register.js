@@ -2,32 +2,33 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 export class Register extends Component {
-    state = {
-      newUser: {
-        username: "",
-        email: "",
-        password: "",
-        password2: ""
-      },
-      errors: [],
-      success: false
-    };
+  state = {
+    newUser: {
+      username: "",
+      email: "",
+      password: "",
+      password2: ""
+    },
+    errors: [],
+    success: false
+  };
 
-    handleChange = e => {
-      console.log({ [e.target.name]: e.target.value });
+  handleChange = e => {
+    console.log({ [e.target.name]: e.target.value });
 
-      const userData = this.state.newUser
-      userData[e.target.name] = e.target.value
+    // THIS WORKS...
+    const userData = this.state.newUser;
+    userData[e.target.name] = e.target.value;
+    this.setState(userData);
 
-      this.setState(userData)
-
-    //   this.setState(prevState => ({
-    //     newUser: { ...prevState.newUser, [e.target.name]: e.target.value }
-    //   }));
-    };
+    // THIS NO LONGER WORKS...
+    // this.setState(prevState => ({
+    //   newUser: { ...prevState.newUser, [e.target.name]: e.target.value }
+    // }));
+  };
 
   render() {
-      console.log(this.state.newUser)
+    console.log(this.state.newUser);
     return (
       <Fragment>
         <h1 className="large text-golden">Sign Up</h1>
